@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="sketch.js"></script>   
+    <title>Hatched</title>
+    <style>
+        /* Initially hide the generate section and egg-loading overlay */
+        .generate, .egg-loading {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="frost"></div>
+    <div class="titlepage"></div>
+
+    <div class="words">
+        <p> generates a live visualization of time passing or approaching an inputted date. </p>
+    </div>
+
+    <div class="panel-1">
+        <form id="submission-form">
+            <input type="datetime-local" id="datetime" name="birthdaytime" required>
+            <button type="submit" id="submit-btn">Submit</button>
+        </form>
+
+        <div class="panel-2">
+            <div class="colors"></div>
+            <div class="patterns"></div>
+        </div>
+    </div>
+
+    <div class="egg-loading">
+        <img class="three-cracks-egg" src="images/full-egg.png" id="egg-image" />
+    </div>
+
+    <div class="generate" id="generate">
+        <img class="outside-menu-egg" src="images/crackedegg.png">
+        <div class="sidebar">
+            <img class="inside-menu-egg" src="images/brokenegg.png">
+            <h2>Years</h2>
+            <h2>Months</h2>
+            <h2>Days</h2>
+            <h2>Hours</h2>
+            <h2>Minutes</h2>
+            <h2>Seconds</h2>
+        </div>
+
+        <div id="p5-wrapper" style="width: 100vw; height: 100vh;"></div>
+
+    </div>
+
+</body>
+</html>

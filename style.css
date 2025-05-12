@@ -1,0 +1,322 @@
+/* codepen "text vertical animation" by johnathan
+https://codepen.io/nath_dev/pen/RwzMZXw  */
+
+*{
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: handodle;
+    src: url(handodle/Handodle-rg38A.ttf);
+}
+body{
+    width: 300vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.frost {
+    z-index: 1;
+    width: 400vw;
+    height: 100vh;
+    position: absolute;
+    background: rgba(255, 255, 255, 0); 
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px); 
+    transition:
+        background-color 0.2s ease-out,
+        backdrop-filter 0.2s ease-out,
+        -webkit-backdrop-filter 0.2s ease-out;
+}
+.titlepage {
+    width: 100vw;
+    height: 100vh;
+}
+.titlepage h1:first-of-type {
+    color: rgba(187,183,48,1);
+    font-family:'helvetica', san-serif;
+    font-weight: 800;
+    font-size: 5vw;
+    letter-spacing: 0.15em;
+    z-index: 2;
+}
+h1 {
+    text-align: center; 
+    font-size: 3vw;   
+    font-family: handodle;
+    font-weight: 100;
+    color: black;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+.text {
+    position: fixed;
+    overflow: hidden;
+    text-orientation: upright;
+    writing-mode: vertical-rl;
+}
+@keyframes typewriter-vertical {
+    0% {
+        height: 0;
+        overflow: hidden;
+    }
+    100% {
+        height: 9em; 
+        overflow: hidden;
+    }
+}
+
+@keyframes typewriter-horizontal {
+    0% {
+        width: 0;
+        overflow: hidden;
+    }
+    100% {
+        width: 11em;
+        overflow: hidden;
+    }
+}
+.words {
+    width:100vw;
+    height: 100vh;
+    align-content: center;
+    z-index: 2;
+    text-shadow: 1px 1px 10px white;
+}
+.panel-1 {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+p {
+    text-align: left;
+    font-size: 3vw;
+    width: 45vw;
+    margin-left: 40px;
+    margin-top: 20vh;
+    font-family: Helvetica, sans-serif;
+    font-weight: 400;
+    line-height: 1.15;
+    color: rgba(187,183,48,1);
+}
+.panel-2 {
+    display: flex;
+    flex-direction: row;
+    margin-left: -10.5vw;
+    margin-top: 5vh;
+}
+.colors{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 7vh;
+}
+.colors,
+.patterns {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    width: 15vw;
+}
+input#datetime {
+    padding: 10px;
+    font-family: Helvetica, san-serif;
+    font-weight: 400;
+    width: 25vw;
+    height:5vh;
+    margin-bottom: 10vh;
+}
+input[type="datetime-local"] {
+    background-color: black;
+    padding: 15px;
+    position: absolute;
+    transform: translate (-50%, -50%);
+    top: 32vh;
+    left: 235vw;
+    font-family: Helvetica, sans-serif;
+    color:rgba(187,183,48,1);
+    border: none;
+    border-radius: 5px;
+}
+/* media query */
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    background-color: rgba(187,183,48,1);
+    border-radius: 3px;
+}
+input[type="color"] {
+    background-color: transparent;  
+    border: 3px solid black;
+    border-radius: 4px;
+    padding: 5px;               
+    cursor: pointer;       
+    width: 4vw;
+    height: 4vw;
+    margin: 2px;
+    transition: transform 0.3s ease;
+}
+input[type="color"]::-webkit-color-swatch {
+    border-radius: 3px;
+    border: none;
+}
+/* media query */
+input[type="color"]::-webkit-color-swatch:hover {
+    scale: 1.2;
+}
+form {
+    margin-left: 0;
+    padding: 0;
+}
+/* media query */
+#submit-btn {
+    background-color: black;
+    color: rgba(187,183,48,1);
+    border-radius: 4px;
+    padding: 10px;
+    font-family: Helvetica, san-serif;
+    display: absolute;
+    left: 250vw;
+    top: 77vh;
+    width: 10vw;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    position: absolute;
+    z-index: 5;
+
+    a{
+        text-decoration: none;
+        color: rgba(187,183,48,1);
+        font-family: Helvetica, sans-serif;
+    }
+}
+/* media query */
+.patterns{
+    margin-top: 11vh;
+    margin-left: 7vw;
+}
+/* media query */
+.patterns select {
+    background-color: transparent;
+    border: 3px solid black;
+    border-radius: 4px;
+    padding: 0px;
+    cursor: pointer;
+    width: 10vw;
+    height: 2.5vw;
+    margin: 5px;
+    margin-left: 2vw;
+    font-size: 1.2vw;
+    color: black;
+    transition: transform 0.3s ease;
+}
+.patterns select:hover {
+    border: 3px solid rgba(187,183,48,1);
+}
+.patterns select:focus {
+    outline: none;
+}
+.egg-loading {
+    position: fixed; /* Fix position on viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(187, 183, 48, 1);
+
+    display: flex; /* Enable flex layout for centering */
+    justify-content: center;
+    align-items: center;
+
+    margin: 0;
+    z-index: 100;
+}
+#egg-image {
+    transform: scaleY(0.8);   
+    width: 40vw;              
+    height: auto;
+    margin-top: 0vh;
+    margin-left: 0vw;
+    z-index:5;
+}
+#egg-image:nth-of-type(3) {
+    top:-25vh;
+}
+.fade-out {
+    animation: fadeOut 4s forwards;
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.generate {
+    background-color: transparent;
+    width: 100vw;
+    z-index: 3;
+    height: 100vh;
+}
+
+.sidebar {
+    background-color: black;
+    width: 30vw;
+    position: absolute;
+    right: -300vw;
+    height: 100vh;
+    top:0;
+    transition: right 0.5s ease-in-out;
+    display: none;
+    z-index: 13;
+}
+.sidebar-open {
+    display: block;
+}
+.sidebar h2 {
+    color: white;
+    font-family: Helvetica, sans-serif;
+}
+.inside-menu-egg {
+    position: absolute;
+    width: 10vw;
+    height:auto;
+    left: 18vw;
+    top: -2vh;
+}
+.outside-menu-egg {
+    position: relative;
+    width: 10vw;
+    height:auto;
+    left: 90vw;
+    top: 0vh;
+    z-index: 12;
+}
+
+#p5-wrapper {
+    position: absolute;
+    top: 0;
+    left: 300vw; 
+    z-index: 1;
+}
+
+#canvas {
+    position: absolute;
+    top: 50%;             
+    left: 50%;            
+    transform: translate(-50%, -50%); 
+    margin-left: 50vw;   
+    width: 85vw;          
+    height: 85vh;         
+    z-index: 2;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
